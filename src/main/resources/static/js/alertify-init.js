@@ -7,6 +7,48 @@
 
 "use strict";
 
+function chack(){
+    $.post(
+        {
+            url:"/ajax/chackName",
+            data:{"userCode":$("#userCode").val()},
+            dataType:"json",
+            success:function (data){
+                var inf = data;
+                var inf1 = JSON.stringify(inf)
+                if(inf1 == "\"用户名重复\""){
+                    $('#userinfo').css("color","red")
+                }else {
+                    $('#userinfo').css("color","green")
+                }
+                $("#userinfo").html(data.toString());
+            }
+        }
+    )
+
+}
+
+function chackpwd(){
+    $.post(
+        {
+            url:"/ajax/chackPwd",
+            data:{"userPassword":$("#userPassword").val()},
+            dataType:"json",
+            success:function (data){
+                var inf = data;
+                var inf1 = JSON.stringify(inf)
+                if(inf1 == "\"密码太简单了哦\""){
+                    $('#userinfo2').css("color","green")
+                }else {
+                    $('#userinfo2').css("color","green")
+                }
+                $("#userinfo2").html(data.toString());
+            }
+        }
+    )
+
+}
+
 (function() {
 
     function $(selector) {
