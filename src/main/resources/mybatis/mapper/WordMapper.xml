@@ -1,0 +1,14 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--configuration core file-->
+<mapper namespace="com.gxt.dao.WordMapper">
+
+    <select id="getWord" resultType="Word">
+        select * from ${bookName} where wordId = #{wordId}
+    </select>
+
+    <select id="getWordCount" resultType="int" parameterType="String">
+        select count(found_rows()) from ${bookName}
+    </select>
+</mapper>

@@ -1,0 +1,52 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--configuration core file-->
+<mapper namespace="com.gxt.dao.LearningMapper">
+
+    <insert id="addUserLearn" parameterType="Learning">
+        insert into user_learning (userCode,learningBookId,completion,learningNo,errorNo)
+        values (#{userCode},#{learningBookId},#{completion},#{learningNo},#{errorNo});
+    </insert>
+
+    <select id="getLearningBookId" parameterType="String" resultType="String">
+        select learningBookId from user_learning where userCode = #{userCode}
+    </select>
+
+    <select id="getCompletion" parameterType="String" resultType="int">
+        select completion from user_learning where userCode = #{userCode}
+    </select>
+
+    <select id="getLearningNo" parameterType="String" resultType="int">
+        select learningNo from user_learning where userCode = #{userCode}
+    </select>
+
+    <select id="getErrorNo" parameterType="String" resultType="int">
+        select errorNo from user_learning where userCode = #{userCode}
+    </select>
+
+    <update id="updataUserLearn" parameterType="Learning">
+        update user_learning set learningBookId = #{learningBookId},completion = #{completion},learningNo = #{learningNo},errorNo = #{errorNo}
+        where userCode = #{userCode}
+    </update>
+
+    <update id="updataCompletion">
+        update user_learning set completion = #{completion} where userCode = #{userCode}
+    </update>
+
+    <update id="updataLearningBookId">
+        update user_learning set learningBookId = #{learningBookId} where userCode = #{userCode}
+    </update>
+
+    <update id="updatalearningNo">
+        update user_learning set learningNo = #{learningNo} where userCode = #{userCode}
+    </update>
+
+    <update id="updataErrorNo">
+        update user_learning set errorNo = #{errorNo} where userCode = #{userCode}
+    </update>
+
+    <select id="getUserLearn" parameterType="String" resultType="Learning">
+        select * from user_learning where userCode = #{userCode}
+    </select>
+</mapper>

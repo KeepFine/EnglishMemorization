@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div class="header-bg" th:fragment="frame">
+        <!-- Navigation Bar-->
+        <header id="topnav">
+            <div class="topbar-main">
+                <div class="container-fluid">
+
+                    <!-- Logo-->
+                    <div>
+                        <a href="" class="logo">
+                            <img th:src="@{picture/MyLOGO.png}" class="logo-lg" alt="" height="50">
+                        </a>
+                    </div>
+                    <!-- End Logo-->
+
+                    <div class="menu-extras topbar-custom navbar p-0">
+
+                        <!-- Search input -->
+                        <div class="search-wrap" id="search-wrap">
+                            <div class="search-bar">
+                                <input class="search-input" type="search" th:placeholder="Search">
+                                <a href="#" class="close-search toggle-search" data-target="#search-wrap">
+                                    <i class="mdi mdi-close-circle"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <ul class="navbar-right ml-auto list-inline float-right mb-0">
+
+                            <li class="list-inline-item dropdown notification-list d-none d-md-inline-block">
+                                <a class="nav-link waves-effect toggle-search" href="#" data-target="#search-wrap">
+                                    <i class="fas fa-search noti-icon"></i>
+                                </a>
+                            </li>
+
+
+                            <!-- full screen -->
+                            <li class="dropdown notification-list list-inline-item d-none d-md-inline-block">
+                                <a class="nav-link waves-effect" href="#" id="btn-fullscreen">
+                                    <i class="fas fa-expand noti-icon"></i>
+                                </a>
+                            </li>
+
+                            <!-- notification -->
+                            <li class="dropdown notification-list list-inline-item">
+                                <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                    <i class="fas fa-bell noti-icon"></i>
+                                    <span class="badge badge-pill badge-danger noti-icon-badge">3</span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-menu-lg px-1">
+                                    <!-- item-->
+                                    <h6 class="dropdown-item-text">
+                                        消息
+                                    </h6>
+                                    <div class="slimscroll notification-item-list">
+                                        <!-- item-->
+                                        <a href="javascript:void(0);" class="dropdown-item notify-item active">
+                                            <div class="notify-icon bg-success"><i class="mdi mdi-cart-outline"></i></div>
+                                            <p class="notify-details"><b>Your order is placed</b><span class="text-muted">Dummy text of the printing and typesetting industry.</span></p>
+                                        </a>
+                                    </div>
+                                    <!-- All-->
+                                    <a th:href="@{toMail}" class="dropdown-item text-center notify-all text-primary">
+                                        查看全部<i class="fi-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </li>
+
+                            <li class="dropdown notification-list list-inline-item">
+                                <div class="dropdown notification-list nav-pro-img">
+                                    <a class="dropdown-toggle nav-link arrow-none waves-effect nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                        <img th:src="${session.userPicture}"   class="rounded-circle">
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown">
+                                        <!-- item-->
+                                        <a class="dropdown-item" th:href="@{/toPersonal}"><i class="mdi mdi-account-circle"></i> 个人中心</a>
+                                        <a class="dropdown-item" href="#"><i class="mdi mdi-lock-open-outline"></i> 锁屏</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item text-danger" th:href="@{/login/LoginOut}"><i class="mdi mdi-power text-danger"></i> 退出登录</a>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="menu-item dropdown notification-list list-inline-item">
+                                <!-- Mobile menu toggle-->
+                                <a class="navbar-toggle nav-link">
+                                    <div class="lines">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+                                </a>
+                                <!-- End mobile menu toggle-->
+                            </li>
+
+                        </ul>
+
+                    </div>
+                    <!-- end menu-extras -->
+
+                    <div class="clearfix"></div>
+
+                </div>
+                <!-- end container -->
+            </div>
+            <!-- end topbar-main -->
+
+            <!-- start content -->
+            <div class="bg-dark">
+                <div class="container-fluid">
+                    <div class="row align-items-center ">
+                        <div class="col-md-8">
+                            <div class="page-title-box">
+                                <h4 class="page-title"><p th:text="${msg}"/></h4>
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item active">今天也要奥里给</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="float-right d-none d-md-block app-datepicker">
+                                <input type="text" class="form-control" data-date-format="MM dd, yyyy" readonly="readonly" id="datepicker">
+                                <i class="mdi mdi-chevron-down mdi-drop"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row top-content">
+                        <div class="col-sm-6 col-xl-3">
+                            <div class="row align-items-center p-1">
+                                <div class="col-lg-6">
+                                    <h5 class="font-16 text-white">已学习天数</h5>
+                                    <h5 class="text-info pt-1 mb-0"><p th:text="${session.stuDay}+天"/></h5>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div id="chart1"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-xl-3">
+                            <div class="row align-items-center p-1">
+                                <div class="col-lg-6">
+                                    <h5 class="font-16 text-white">背记准确率</h5>
+                                    <h5 class="text-warning pt-1 mb-0"><p th:text="${session.correct}"/></h5>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div id="chart2"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-xl-3">
+                            <div class="row align-items-center p-1">
+                                <div class="col-lg-6">
+                                    <h5 class="font-16 text-white">剩余单词</h5>
+                                    <h5 class="text-primary pt-1 mb-0"><p th:text="${session.over}"/></h5>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div id="chart3"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-xl-3">
+
+                            <div class="row align-items-center p-1">
+                                <div class="col-lg-6">
+                                    <h5 class="font-16 text-white">已学习</h5>
+                                    <h5 class="text-danger pt-1 mb-0"><p th:text="${session.completion}"/></h5>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div id="chart4"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- end content -->
+
+            <!-- MENU Start -->
+            <div class="navbar-custom">
+                <div class="container-fluid">
+
+                    <div id="navigation">
+
+                        <!-- Navigation Menu-->
+                        <ul class="navigation-menu">
+
+                            <li class="has-submenu">
+                                <a th:href="@{/toHome}"><i class="fas fa-edit"></i>备忘录</a>
+                            </li>
+
+                            <li class="has-submenu">
+                                <a href="#"><i class="dripicons-briefcase"></i>学习</a>
+                                <ul class="submenu megamenu">
+                                    <li>
+                                        <ul>
+                                            <li><a th:href="@{/toLearning}">单词背记</a></li>
+                                            <li><a th:href="@{/toPractice}">小组测试</a></li>
+                                            <li><a th:href="@{/toSelectBook}">选择词库</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="has-submenu">
+                                <a href="#"><i class="dripicons-broadcast"></i>错词本</a>
+                                <ul class="submenu">
+                                    <li><a th:href="@{/toLearningTwo}">背记错词</a></li>
+                                    <li><a th:href="@{/toPractice}">错词练习</a></li>
+                                    <li><a th:href="@{/toErroeBook}">错词管理</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="has-submenu">
+                                <a href="#"><i class="fas fa-dove"></i> 好友</a>
+                                <ul class="submenu">
+                                    <li><a th:href="@{/toSearch}">添加好友</a></li>
+                                    <li><a th:href="@{/toList}">查看好友</a></li>
+                                    <li><a th:href="@{/toMail}">查看消息</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="has-submenu">
+                                <a href=""><i class="dripicons-to-do"></i>学习记录</a>
+                            </li>
+
+                        </ul>
+                        <!-- End navigation menu -->
+                    </div>
+                    <!-- end #navigation -->
+                </div>
+                <!-- end container -->
+            </div>
+            <!-- end navbar-custom -->
+        </header>
+        <!-- End Navigation Bar-->
+
+    <!-- header-bg -->
+</div>
+
+</html>

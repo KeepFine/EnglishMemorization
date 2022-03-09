@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="common/head :: head(~{::link},~{})">
+
+<body>
+
+<!-- Begin page -->
+<div class="home-btn d-none d-sm-block">
+    <a th:href="@{/toLogin}" class="text-dark"><i class="fas fa-home h2"></i></a>
+</div>
+    <div class="mt-5 pt-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <div class="text-center mb-5">
+                        <div class="mb-5">
+                            <img th:src="@{/picture/MyLOGO.png}" height="50" alt="logo">
+                        </div>
+                        <div class="maintenance-img mb-5">
+                            <img th:src="@{/picture/Book.png}" alt=""  height="100" class="img-fluid mx-auto d-block">
+                        </div>
+                        <h4>关于这个网站</h4>
+                        <p>这是一个个人研发的英语词汇学习网站</p>
+                    </div>
+                </div>
+            </div>
+            <!-- end row -->
+
+            <div class="row mt-4 align-items-center">
+
+                <div class="col-lg-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="font-18 mb-3">背记单词</h5>
+                            <p class="text-muted mb-0">网站提供单词背记及测试功能，更还有备忘录功能，防止忘记重要事件</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="mb-3 font-18">好友社交功能</h5>
+                            <p class="text-muted mb-0">如果能有一个同伴一起学习，你们可以互相看到彼此的学习进度，更能够相互鼓励与督促</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="font-18 mb-3">学习统计进度</h5>
+                            <p class="text-muted mb-0">网站会将你的学习进度实时反馈与你，能够更加直观的了解自己的学习状态，方便自我定位</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END wrapper -->
+
+</body>
+<footer th:replace="common/foot :: foot(~{::link},~{})">
+
+</footer>
+</html>

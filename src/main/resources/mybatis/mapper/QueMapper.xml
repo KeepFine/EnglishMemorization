@@ -1,0 +1,18 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--configuration core file-->
+<mapper namespace="com.gxt.dao.QueMapper">
+
+    <insert id="addQue" parameterType="Que">
+        insert into user_que (userCode,que,ask) values (#{userCode},#{que},#{ask})
+    </insert>
+
+    <update id="updataAsk">
+        update user_que set ask = #{ask} where userCode = #{userCode}
+    </update>
+
+    <select id="getUserAsk" parameterType="String" resultType="String">
+        select ask from user_que where userCode = #{userCode}
+    </select>
+</mapper>

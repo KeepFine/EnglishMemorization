@@ -1,0 +1,30 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--configuration core file-->
+<mapper namespace="com.gxt.dao.ErrorbookMapper">
+
+    <insert id="addOneWord" parameterType="ErrorBook">
+        insert into errorbook (userCode,wordId,wordName,meaning,usersNo) values(#{userCode},#{wordId},#{wordName},#{meaning},#{usersNo})
+    </insert>
+
+    <delete id="delOneWord">
+        delete from errorbook where id=#{id}
+    </delete>
+
+    <select id="getErrorBook" parameterType="String" resultType="ErrorBook">
+        select * from errorbook where userCode = #{userCode}
+    </select>
+
+    <select id="getMaxNoWord" parameterType="String" resultType="Errorbook">
+        select * from errorbook where usersNo = (select max(usersNo)from errorbook where userCode = #{userCode}) AND userCode = #{userCode}
+    </select>
+
+    <select id="getWordByNo" resultType="Errorbook">
+        select * from errorbook where userCode = #{userCode} and wordId = #{wordId}
+    </select>
+
+    <select id="getWordByUsersNo" resultType="Errorbook">
+        select * from errorbook where userCode = #{userCode} and usersNo = #{usersNo}
+    </select>
+</mapper>

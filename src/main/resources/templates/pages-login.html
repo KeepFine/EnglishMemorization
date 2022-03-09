@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="common/head :: head(~{::link},~{})">
+
+
+<body>
+    <div class="accountbg"></div>
+
+    <!-- Begin page -->
+    <div class="home-btn d-none d-sm-block">
+        <a th:href="@{/toAbout}" class="text-white"><i class="mdi mdi-home h1"></i></a>
+    </div>
+
+    <div class="wrapper-page">
+
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-lg-5">
+                    <div class="card card-pages shadow-none mt-4">
+                        <div class="card-body">
+                            <div class="text-center mt-0 mb-3">
+                                <a th:href="@{/toAbout}" class="logo logo-admin">
+                                    <img th:src="@{/picture/MyLOGO.png}" class="mt-3" alt="" height="70"></a>
+                                <p class="text-muted w-75 mx-auto mb-4 mt-4">请输入你的帐号和密码</p>
+                            </div>
+
+                            <p th:text="${session.loginMsg}"/>
+                            <form class="form-horizontal mt-4" method="post" th:action="@{/login/loginTo}">
+
+                                <div class="form-group">
+                                    <div class="col-12">
+                                        <label for="userCode">用户名</label>
+                                        <input class="form-control" type="text" required="" id="userCode" name="userCode" placeholder="用户名">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-12">
+                                        <label for="userPassword">密码</label>
+                                        <input class="form-control" type="password" required="" id="userPassword" name="userPassword" placeholder="密码">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-12">
+                                        <div class="checkbox checkbox-primary">
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                                <label class="custom-control-label" for="customCheck1">记住我</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group text-center mt-3">
+                                    <div class="col-12">
+                                        <button class="btn btn-primary btn-block waves-effect waves-light" type="submit">登录</button>
+                                    </div>
+                                </div>
+
+                                <div class="form-group text-center mt-4">
+                                    <div class="col-12">
+                                        <div class="float-left">
+                                            <a th:href="@{/toRecoverpw}" class="text-muted"><i class="fa fa-lock mr-1"></i>密码忘记了？小笨蛋</a>
+                                        </div>
+                                        <div class="text-right">
+                                            <a th:href="@{/toRegister}" class="text-muted">注册帐号，来一个呗</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="text-center">
+                                    <p class="mt-4 text-muted">Sign in with</p>
+                                    <ul class="social-list list-inline mb-2">
+                                        <li class="list-inline-item">
+                                            <a href="javascript: void(0);" class="social-list-item border-primary text-primary"><i class="mdi mdi-facebook"></i></a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="javascript: void(0);" class="social-list-item border-danger text-danger"><i class="mdi mdi-google"></i></a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="javascript: void(0);" class="social-list-item border-info text-info"><i class="mdi mdi-twitter"></i></a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="javascript: void(0);" class="social-list-item border-secondary text-secondary"><i class="mdi mdi-github-circle"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                            </form>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <!-- end row -->
+        </div>
+    </div>
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/js/jquery.slimscroll.js}"></script>
+    <script th:src="@{/js/waves.min.js}"></script>
+    <script th:src="@{/js/apexcharts.min.js}"></script>
+    <script th:src="@{/js/bootstrap-datepicker.min.js}"></script>
+    <script th:src="@{/js/app.js}"></script>
+
+</body>
+<footer th:replace="common/foot :: foot(~{::link},~{})">
+
+</footer>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--configuration core file-->
+<mapper namespace="com.gxt.dao.ForgetMapper">
+
+    <insert id="addUserForget" parameterType="Forget">
+        insert into user_forget (userCode,creatTime,content) values (#{userCode},#{creatTime},#{content})
+    </insert>
+
+    <select id="getForgetList" parameterType="String" resultType="Forget">
+        select * from user_forget where userCode = #{userCode}
+    </select>
+
+    <select id="getForgetById" resultType="Forget">
+        select * from user_forget where id = #{id}
+    </select>
+
+    <update id="updateForgetById">
+        update user_forget set content = #{content} where id = #{id}
+    </update>
+
+    <delete id="delForgetById">
+        delete from user_forget where id = #{id}
+    </delete>
+</mapper>

@@ -1,0 +1,22 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--configuration core file-->
+<mapper namespace="com.gxt.dao.MailMapper">
+
+    <insert id="addMail" parameterType="Mail">
+        insert user_msg (userCode,content,isAdd) values (#{userCode},#{content},#{isAdd})
+    </insert>
+
+    <delete id="delMail" >
+        delete from user_msg where id = #{id}
+    </delete>
+
+    <select id="getMailByUser" parameterType="String" resultType="Mail">
+        select * from user_msg where userCode =#{userCode}
+    </select>
+
+    <select id="getMailById" resultType="Mail">
+        select * from user_msg where id =#{id}
+    </select>
+</mapper>

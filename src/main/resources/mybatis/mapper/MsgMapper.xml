@@ -1,0 +1,54 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--configuration core file-->
+<mapper namespace="com.gxt.dao.MsgMapper">
+
+    <insert id="addMsg" parameterType="Msg">
+        insert into user_msg (id,userCode,userPassword,userName,mail,picture,creationDate) values(#{id},#{userCode},#{userPassword},#{userName},#{mail},#{picture},#{creationDate})
+    </insert>
+
+    <update id="updatePassword">
+        update user_msg set userPassword =#{userPassword} where id = #{id}
+    </update>
+
+    <update id="updateName">
+        update user_msg set userName =#{userName} where id = #{id}
+    </update>
+
+    <update id="updatePicture">
+        update user_msg set picture =#{picture} where id = #{id}
+    </update>
+
+    <update id="updateMail">
+        update user_msg set mail =#{mail} where id = #{id}
+    </update>
+
+    <select id="getMsgById" resultType="Msg">
+        select * from user_msg where id = #{id}
+    </select>
+
+    <select id="getMsgByUserCode" parameterType="String" resultType="Msg">
+        select * from user_msg where userCode = #{userCode}
+    </select>
+
+    <select id="getCreatTime" resultType="Date">
+        select creationDate from user_msg where id = #{id}
+    </select>
+
+    <select id="getPassword" parameterType="String">
+        select userPassword from user_msg where id = #{id}
+    </select>
+
+    <select id="getUserNameById" resultType="String">
+        select userName from user_msg where id = #{id}
+    </select>
+
+    <select id="getUserCodeByName" parameterType="String" resultType="String">
+        select userCode from user_msg where userCode = #{userCode}
+    </select>
+
+    <select id="getUserPic" parameterType="String" resultType="String">
+        select picture from user_msg where userCode = #{userCode}
+    </select>
+</mapper>

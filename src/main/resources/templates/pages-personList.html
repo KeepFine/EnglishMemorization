@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="common/head :: head(~{::link},~{})">
+
+
+<body>
+<div th:replace="common/frame :: frame"></div>
+<div class="form-group text-center mb-3">
+
+    <div class="card">
+
+        <div class="row p-3">
+            <div class="col-lg-4">
+                <form role="search" class="email-inbox">
+                    <div class="form-group mb-0">
+                        <h4 class="mt-0">好友列表</h4>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-lg-8">
+                <div class="btn-toolbar float-lg-right" role="toolbar">
+                    <div class="btn-group mb-2 mb-sm-0">
+                        <button type="button" class="btn btn-primary waves-light waves-effect" id="alertify-confirm8"><i class="far fa-trash-alt"></i></button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <ul class="message-list">
+
+            <!-- start 1 -->
+            <li>
+                <div class="col-mail col-mail-1">
+                    <div class="checkbox-wrapper-mail">
+                        <input type="checkbox" id="chk1">
+                        <label for="chk1" class="toggle"></label>
+                    </div>
+                    <a href="#" class="title">
+                        <img class="mr-3 rounded-circle float-left mt-2" src="static/picture/user-1.jpg" alt="" height="40">
+                        <h6 class="mb-0 font-15 mt-3 pt-1">Whitney Gordon  <span class="noti-msg badge-primary font-12 badge mr-2 float-right">+12</span> </h6>
+                    </a>
+                    <span class="star-toggle far fa-star text-primary"></span>
+                </div>
+                <div class="col-mail col-mail-2">
+                    <a href="#" class="subject">
+
+                        <p class="mb-0 font-15"> Wolombo has been arranged, come get
+                            <span class="text-muted mt-1 mb-0 pl-1"> Hello – <span class="teaser">Trip home from Colombo has been arranged,
+                                                                                                        then Jenna will come get me from Stockholm. :)</span>
+                                                </span>
+                        </p>
+                    </a>
+                    <div class="date">
+                        <a href="">May 20</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+    </div>
+    <!-- card -->
+
+
+
+</div>
+
+<script th:src="@{/js/jquery.min.js}"></script>
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/js/jquery.slimscroll.js}"></script>
+<script th:src="@{/js/waves.min.js}"></script>
+<script th:src="@{/js/apexcharts.min.js}"></script>
+<script th:src="@{/js/bootstrap-datepicker.min.js}"></script>
+<script th:src="@{/js/alertify.js}"></script>
+<script th:src="@{/js/alertify-init.js}"></script>
+<!-- App js -->
+<script th:src="@{/js/app.js}"></script>
+</body>
+<footer th:replace="common/foot :: foot(~{::link},~{})">
+
+</footer>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--configuration core file-->
+<mapper namespace="com.gxt.dao.TargetMapper">
+
+
+    <insert id="addUserTarget" parameterType="Target">
+        insert into user_target (userCode,picture,target) values (#{userCode},#{picture},#{target})
+    </insert>
+
+    <update id="updataPicture">
+        update user_target set picture = #{picture} where userCode = #{userCode}
+    </update>
+
+    <update id="updataTarget">
+        update user_target set target = #{target} where userCode = #{userCode}
+    </update>
+
+    <select id="getTargetPicture" parameterType="String" resultType="String">
+        select picture from user_target where userCode = #{userCode}
+    </select>
+
+    <select id="getTargetword" parameterType="String" resultType="String">
+        select picture from user_target where target = #{target}
+    </select>
+
+    <select id="getUserTarget" parameterType="String" resultType="Target">
+        select * from user_target where userCode = #{userCode}
+    </select>
+</mapper>

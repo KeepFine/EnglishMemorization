@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="common/head :: head(~{::link},~{})">
+
+
+<body>
+<script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+<script th:inline="javascript">
+    function chackMeaning(){
+        $.post(
+            {
+                url:"/ajax/chackMeaning",
+                dataType:"json",
+                success:function (data){
+                    var inf = data;
+                    var inf1 = JSON.stringify(inf)
+                    $("#meaning").html(data.toString());
+                }
+            }
+        )
+
+    }
+    function addError(){
+        $.post(
+            {
+                url:"/ajax/addError",
+                dataType:"json",
+                success:function (data){
+                    var inf = data;
+                    var inf1 = JSON.stringify(inf)
+                    $("#wordName").cleanData;
+                    $("#meaning").html("");
+                    $("#wordName").html(data.toString());
+                }
+            }
+        )
+
+    }
+
+    function nextOne(){
+        $.post(
+            {
+                url:"/ajax/nextOne",
+                dataType:"json",
+                success:function (data){
+                    var inf = data;
+                    var inf1 = JSON.stringify(inf)
+                    $("#wordName").cleanData;
+                    $("#meaning").html("");
+                    $("#wordName").html(data.toString());
+                }
+            }
+        )
+
+    }
+
+    function previousOne(){
+        $.post(
+            {
+                url:"/ajax/previousOne",
+                dataType:"json",
+                success:function (data){
+                    var inf = data;
+                    var inf1 = JSON.stringify(inf)
+                    $("#wordName").cleanData;
+                    $("#meaning").html("");
+                    $("#wordName").html(data.toString());
+                }
+            }
+        )
+
+    }
+</script>
+<div th:replace="common/frame :: frame"></div>
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="text-center mt-4">
+            <h4 class="mt-0">单词背记中</h4>
+            <p class="text-muted">根据英文识别回忆释义</p>
+        </div>
+    </div>
+</div>
+<div class="col-md-12 col-xl-12">
+    <div class="progress">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" th:aria-valuenow="${session.over}" aria-valuemin="0" th:aria-valuemax="${session.over}+${session.completion}" ></div>
+    </div>
+</div>
+<hr>
+<div class="row justify-content-center">
+<div class="col-md-10 col-xl-10">
+
+    <div class="card">
+        <h6 class="mt-0" th:name="wordInfo" th:text="${wordInfo}"></h6>
+        <h3 class="align-content-center" th:name="wordName" id="wordName" th:text="${word}"></h3>
+        <h6 class="align-content-center" th:name="meaning" id="meaning"></h6>
+        <div class="card-body">
+            <div class="button-items">
+                <button type="button" class="btn btn-outline-primary waves-effect waves-light" onclick="chackMeaning()">查看释义</button>
+                <button type="button" class="btn btn-outline-secondary waves-effect" onclick="addError()">不记得（加入错题库）</button>
+                <button type="button" class="btn btn-outline-success waves-effect waves-light" onclick="nextOne()">记得（下一个）</button>
+                <button type="button" class="btn btn-outline-info waves-effect waves-light" onclick="previousOne()">上一个</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+
+<script th:src="@{/js/jquery.min.js}"></script>
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/js/jquery.slimscroll.js}"></script>
+<script th:src="@{/js/waves.min.js}"></script>
+<script th:src="@{/js/apexcharts.min.js}"></script>
+<script th:src="@{/js/bootstrap-datepicker.min.js}"></script>
+<script th:src="@{/js/alertify.js}"></script>
+<script th:src="@{/js/alertify-init.js}"></script>
+<script th:src="@{/js/app.js}"></script>
+<script th:src="@{/js/apexcharts.min.js}"></script>
+
+</body>
+<footer th:replace="common/foot :: foot(~{::link},~{})">
+
+</footer>
+</html>

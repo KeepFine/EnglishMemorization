@@ -1,0 +1,22 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--configuration core file-->
+<mapper namespace="com.gxt.dao.FriendMapper">
+
+    <insert id="addUserFriend" parameterType="Friend">
+        insert into user_friend (userCode,friendId) values (#{userCode},#{friendId})
+    </insert>
+
+    <delete id="delUserFriend">
+        delete from user_friend where id = #{id}
+    </delete>
+
+    <select id="getFriendsList" parameterType="String" resultType="Friend">
+        select * from user_friend where userCode = #{userCode}
+    </select>
+
+    <select id="getFriend" resultType="Friend">
+        select 8 from user_friend where id = #{id}
+    </select>
+</mapper>
